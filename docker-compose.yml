@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   db:
     image: postgres:13
@@ -7,15 +7,19 @@ services:
       - POSTGRES_USER=odoo
       - POSTGRES_DB=postgres
     restart: always             # run as a service
-    volumes:
-        - ./postgresql:/var/lib/postgresql/data
+#    volumes:
+#        - ./postgresql:/var/lib/postgresql/data
+    networks: 
+     - frontend
 
   odoo14:
     image: odoo:14
     depends_on:
       - db
+    links:
+      - db
     ports:
-      - "10014:8069"
+      - "8069:8069"
     tty: true
     command: -- --dev=reload
 #    command: odoo scaffold /mnt/extra-addons/custom_module
@@ -25,6 +29,10 @@ services:
       - PASSWORD=odoo
     volumes:
       - .:/mnt/extra-addons/estate
-      - ./etc:/etc/odoo
+      - ./odoo.conf:/etc/odoo/odoo.conf
     restart: always             # run as a service
+    networks: 
+     - frontend
     
+networks:
+ frontend:
