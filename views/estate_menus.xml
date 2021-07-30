@@ -13,10 +13,20 @@
 		id="estate_menu_advertisement"
 		parent="estate_menu_root"
 		name="Advertisement" />
+	<menuitem
+		id="estate_menu_settings"
+		parent="estate_menu_root"
+		name="Settings" />
 		
 	<menuitem
 		id="estate_menu_advertisement_properties"
 		parent="estate_menu_advertisement"
 		name="Properties"
 		action="estate_model_property_action" />
+		
+	<menuitem
+		id="estate_menu_settings_property_type"
+		parent="estate_menu_settings"
+		name="Property Types"
+		action="estate_model_property_type_action" />
 </odoo>

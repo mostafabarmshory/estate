@@ -21,7 +21,7 @@ services:
     ports:
       - "8069:8069"
     tty: true
-    command: -- --dev=reload -u estate
+    command: -- -u estate --dev xml
 #    command: odoo scaffold /mnt/extra-addons/custom_module
     environment:
       - HOST=db
