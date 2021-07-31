@@ -26,3 +26,5 @@ class EstateProperty(models.Model):
         ('sold', 'Sold'), 
         ('canceled', 'Canceled')], 
         required=True, default='new')
+    
+    property_type_id = fields.Many2one("estate.property.typ", string="Type")
